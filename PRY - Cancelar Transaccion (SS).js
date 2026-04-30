@@ -14,8 +14,9 @@ define(['N/ui/serverWidget'], (serverWidget) => {
                 // Agregar botón personalizado
                 form.addButton({
                     id: 'custpage_btn_cancelar',
-                    label: 'Cancelar Transacción',
-                    functionName: 'cancelTransaction' // Función del Client Script
+                    label: 'Cancelar / Inutilización Transacción',
+                    // functionName: 'cancelTransaction' // Función del Client Script
+                    functionName: 'requestHandler' // Función del Client Script
                 });
 
                 // Asociar el Client Script al formulario

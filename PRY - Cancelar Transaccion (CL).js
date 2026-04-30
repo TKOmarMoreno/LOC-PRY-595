@@ -6,6 +6,94 @@
 define(['N/currentRecord', 'N/format', 'L595/utilidades', 'N/runtime', 'N/https', 'N/url', 'N/log', 'N/record', 'N/search', 'N/error', 'N/ui/dialog', 'N/translation'],
     function (currentRecord, format, utilities, runtime, https, url, log, record, search, error, dialog, translation) {
 
+        const requestHandler = (context) => {
+            let FN = "requestHandler";
+            try {
+                let valorSeleccionado = "inutilizar"; // Valor por defecto
+                var htmlContent = '<div style="padding: 20px;">' +
+                    '  <p>Seleccione una opción:</p>' +
+                    '  <select id="l595_proceso_transaccion" class="input" style="width: 100%; padding: 5px; margin-bottom: 20px;">' +
+                    '    <option value="inutilizar">Inutilizar Transacción</option>' +
+                    '    <option value="cancelar">Cancelar Transacción</option>' +
+                    '    <option value="ninguno">Regresar</option>' +
+                    '  </select>' +
+                    '</div>';
+
+                document.addEventListener('change', function (e) {
+                    if (e.target && e.target.id === 'l595_proceso_transaccion') {
+                        valorSeleccionado = e.target.value;
+                    }
+                });
+
+                dialog.create({
+                    title: "Seleccione el evento que desea ejecutar.",
+                    message: htmlContent,
+                    buttons: [
+                        { label: 'Confirmar', value: 'confirmar' },
+                        { label: 'Cerrar', value: 'cancelar' }
+                    ]
+                }).then(function (result) {
+                    if (result === 'confirmar') {
+
+                        log.debug(FN, `Opción seleccionada: ${valorSeleccionado}`);
+                        log.debug(FN, valorSeleccionado)
+                        console.log(valorSeleccionado);
+                        if (valorSeleccionado === 'inutilizar') {
+                            inutilizarTransaccion();
+                        } else if (valorSeleccionado === 'cancelar') {
+                            cancelTransaction();
+                        } else if (valorSeleccionado === 'ninguno') {
+                            // log.debug(FN, 'El usuario ha decidido regresar sin realizar ninguna acción.');
+                        }
+                    }
+                });
+            } catch (error) {
+                log.error({
+                    title: FN,
+                    details: error
+                })
+            }
+        }
+
+        const inutilizarTransaccion = () => {
+            let FN = "inutilizarTransaccion";
+            try {
+                log.debug(FN, 'Función de inutilización de transacción');
+                let motivo = "";
+
+                var htmlContent = '<div style="padding: 20px;">' +
+                    '  <p>Ingrese el motivo de inutilización:</p>' +
+                    '  <input type="text" id="l595_motivo_inutilizacion" style="width: 100%; padding: 5px;" />' +
+                    '</div>'
+                document.addEventListener('input', function (e) {
+                    if (e.target && e.target.id === 'l595_motivo_inutilizacion') {
+                        motivo = e.target.value;
+                    }
+                });
+
+                dialog.create({
+                    title: "Proceso de Inutilización de Transacción",
+                    message: htmlContent,
+                    buttons: [
+                        { label: 'Aceptar', value: 'yes' },
+                        { label: 'Cancelar', value: 'no' }
+                    ]
+                }).then(function (result) {
+                    if (result === 'yes') {
+                        console.log("El usuario escribió: " + motivo);
+                        // Aquí ejecutas tu lógica con motivo
+                    } else {
+                        alert('Proceso de inutilización cancelado por el usuario.');
+                    }
+                });
+            } catch (error) {
+                log.error({
+                    title: FN,
+                    details: error
+                })
+            }
+        }
+
         function cancelTransaction() {
             const process = 'cancelTransaction';
             var motivo = prompt('Por favor ingresa el motivo de cancelación:');
@@ -19,7 +107,7 @@ define(['N/currentRecord', 'N/format', 'L595/utilidades', 'N/runtime', 'N/https'
                     });
                     return false;
                 }
-                
+
                 var currentContext = currentRecord.get();  // Obtiene el registro actual (transacción)
                 const recId = currentContext.id;
                 const recType = currentContext.type;
@@ -67,19 +155,19 @@ define(['N/currentRecord', 'N/format', 'L595/utilidades', 'N/runtime', 'N/https'
 
                 if (informacionRespuestaAux.cancelado) {
                     record.submitFields({
-                    type: recType,
-                    id: recId,
-                    values: {
+                        type: recType,
+                        id: recId,
+                        values: {
 
-                        custbody_l595_fe_fecha_cancelacion: new Date(informacionRespuestaAux.FECHA),
-                        custbody_l595_fe_motivo_cancelacion: motivo,
-                        custbody_l595_estado_comp_elec: informacionRespuestaAux.estadoTransaction
-                    },
-                    options: {
-                        enablesourcing: false,
-                        ignoreMandatoryFields: true
-                    }
-                });
+                            custbody_l595_fe_fecha_cancelacion: new Date(informacionRespuestaAux.FECHA),
+                            custbody_l595_fe_motivo_cancelacion: motivo,
+                            custbody_l595_estado_comp_elec: informacionRespuestaAux.estadoTransaction
+                        },
+                        options: {
+                            enablesourcing: false,
+                            ignoreMandatoryFields: true
+                        }
+                    });
                 }
 
                 // Comprobar si la transacción fue rechazada o tiene un estado no válido
@@ -151,6 +239,6 @@ define(['N/currentRecord', 'N/format', 'L595/utilidades', 'N/runtime', 'N/https'
         };
 
         return {
-            cancelTransaction
+            requestHandler
         };
     });
