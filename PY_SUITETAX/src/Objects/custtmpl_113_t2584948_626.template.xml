@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
 <pdf>
-
     <head>
         <#if record.custbody_l595_tipo_comprobante.id='1' || record.custbody_l595_tipo_comprobante.id='2' || record.custbody_l595_tipo_comprobante.id='3' || record.custbody_l595_tipo_comprobante.id='4' || record.custbody_l595_tipo_comprobante.id='5' || record.custbody_l595_tipo_comprobante.id='6' || record.custbody_l595_tipo_comprobante.id='23'>
             <macrolist>
                 <macro id="nlheader">
                     <table class="header" style=" height: 15%; width: 100%; border: 1px solid black; ">
                         <tr>
-                            <td colspan="9" align="center" style="text-align: center; background: #AEAEAE;">KuDE de Nota de remisión electrónica</td>
+                            <td colspan="9" align="center" style="text-align: center; background: #AEAEAE;">KuDE de Nota de Remisión Electrónica</td>
                         </tr>
                         <tr>
                             <td colspan="6" rowspan="4" align="left" style="margin-left: 13px;">
                               <#assign jsonList = record.custbody_l595_actividad_economica?eval />
                                 <#assign actEconomica = jsonList[0].nombre />
-                                
-
                                 <span class="title">
                                     <!-- <img src='https://7138551.app.netsuite.com/core/media/media.nl?id=112&amp;c=7138551&amp;h=0uZXyLZrVmHUHHqQHbpoR3jGoUNwqGBj_hqm-kdkTUjT6dLH' style="vertical-align: center; height:40%; width:40%" /> -->
                                     <#if subsidiary.logo?length != 0>
@@ -23,22 +20,22 @@
                                     </#if>
                                     <p style="text-align: left;"><span style="font-size:11px;">
                                       <b> ${subsidiary.legalname} </b> <br />
-                                      Dirección: ${subsidiary.mainaddress_text ?replace('\r\n',' ') ?replace('\n',' ') ?replace('<br />',' ')} <br />
-                                      Ciudad: ${subsidiary.city} <br />
-                                      Telefono: ${subsidiary.custrecord_l595_telefono}<br />
-                                      Email: ${subsidiary.email}<br />
-                                      Actividad Ecomica: ${actEconomica}
+                                      <b>Dirección:</b> ${subsidiary.mainaddress_text ?replace('\r\n',' ') ?replace('\n',' ') ?replace('<br />',' ')} <br />
+                                      <b>Ciudad:</b> ${subsidiary.city} <br />
+                                      <b>Telefono:</b> ${subsidiary.custrecord_l595_telefono}<br />
+                                      <b>Email:</b> ${subsidiary.email}<br />
+                                      <b>Actividad Económica:</b> ${actEconomica}
                                     </span></p>
                                 </span>
                             </td>
                             <td colspan="3" rowspan="4" align="left" style="margin-top: 10px; font-size:11px;">
                                 <p>
-                                    RUC:${subsidiary.custrecord_l595_nro_ident_fiscal}<br />
-                                    TIMBRADO N° ${record.custbody_l595_timbrado}<br />
-                                    Fecha Inicio Vigencia: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio}<br />
-                                    Serie: ${record.custbody_l595_serie}
+                                    <b>RUC:</b>${subsidiary.custrecord_l595_nro_ident_fiscal}<br />
+                                    <b>TIMBRADO N°:</b> ${record.custbody_l595_timbrado}<br />
+                                    <b>Fecha Inicio Vigencia:</b> ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio}<br />
+                                    <b>Serie:</b> ${record.custbody_l595_serie}
                                 </p><br /><br />
-                                <p>
+                                <p  style="font-size: 18px; line-height: 16px; margin: 0;">
                                     ${record.custbody_l595_tipo_comprobante}<br />
                                     ${record.custbody_l595_numero_localizado}
                                 </p>
@@ -211,33 +208,34 @@
         <#if record.custbody_l595_tipo_comprobante.id='1' || record.custbody_l595_tipo_comprobante.id='2' || record.custbody_l595_tipo_comprobante.id='3' || record.custbody_l595_tipo_comprobante.id='4' || record.custbody_l595_tipo_comprobante.id='5' || record.custbody_l595_tipo_comprobante.id='6' || record.custbody_l595_tipo_comprobante.id='23'>
             <table style="width: 100%; border: 1px solid black; margin-bottom: 5px;">
                 <tr>
-                    <td style="font-size:12px;">Documento Asociado: ${record.createdfrom}</td>
+                    <td style="font-size:12px;"><b>Documento Asociado:</b> ${record.createdfrom}</td>
+                   
                 </tr>
             </table>
             <table class="header" style="height: 66px; width: 100%; border: 1px solid black; margin-bottom: 5px;">
                 <tr style="margin-top: 10px;">
                     <td align="left" style="width: 60%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;</span>Fecha y Hora emsión: ${record.trandate} 00:00:00</p>
+                &nbsp;</span><b>Fecha y Hora de Emisión:</b> ${record.trandate}</p>
                     </td>
                 </tr>
                 <tr>
                     <td align="center" style="width: 100%;">
                         <p style="text-align: center; font-size:12px;"><span style="font-size:12px;">
-                        <b>Destinatario de la mercaderia</b></span></p>
+                        <b>Destinatario de la mercadería</b></span></p>
                     </td>
                 </tr>
                 &nbsp;
                 <tr>
                     <td align="left" style="width: 60%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;Nombre o Razón social: ${record.custbody_l595_razon_social}</span></p>
+                &nbsp;<b>Nombre o Razón social:</b> ${record.custbody_l595_razon_social}</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td align="left" style="width: 60%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;Ruc / Documento de Identidad: ${record.custbody_l595_cliente_transaccion.custentity_l595_nro_documento}</span></p>
+                &nbsp;<b>Ruc / Documento de Identidad:</b> ${record.custbody_l595_cliente_transaccion.custentity_l595_nro_documento}</span></p>
                     </td>
                 </tr>
             </table>
@@ -251,23 +249,23 @@
                 <tr style="margin-top: 10px;">
                     <td colspan="3" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;Responsable de emisión: ${record.custbody_l595_location_transaccion}</span></p>
+                &nbsp;&nbsp;<b>Responsable de emisión:</b> ${record.custbody_l595_location_transaccion}</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;Responsable del costo de flete: ${record.custbody_l595_responsable_flete}</span></p>
+                &nbsp;&nbsp;<b>Responsable del costo de flete:</b> ${record.custbody_l595_responsable_flete}</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;</span>Fecha de inicio de traslado: ${record.custbody_l595_fecha_ini}</p>
+                &nbsp;&nbsp;</span><b>Fecha de inicio de traslado:</b> ${record.custbody_l595_fecha_ini}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;Fecha de fin de traslado: ${record.custbody_l595_fecha_fin}</span></p>
+                &nbsp;&nbsp;<b>Fecha de fin de traslado:</b> ${record.custbody_l595_fecha_fin}</span></p>
                     </td>
                 </tr>
                 <tr style="margin-top: 5px;">
@@ -279,7 +277,7 @@
                 <tr style="margin-top: 10px;">
                    <td colspan="5" align="left" style="width:100%; padding-left:8px;">
                          <p style="text-align:left; font-size:12px; margin:0;">
-                Direccion del punto de partida: ${record.custbody_l595_direccion_ubicacion?replace('\r\n',' ') ?replace('\n',' ') ?replace('<br />',' ')}</p>
+                <b>Dirección del punto de partida:</b> ${record.custbody_l595_direccion_ubicacion?replace('\r\n',' ') ?replace('\n',' ') ?replace('<br />',' ')}</p>
                     </td>
                 </tr>
                 <tr style="margin-top: 5px;">
@@ -291,7 +289,7 @@
                 <tr style="margin-top: 10px;">
                     <td colspan="5" align="left" style="width:100%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-               </span>Dirección del punto de entrega: ${record.shipaddress}</p>
+               </span><b>Dirección del punto de entrega:</b> ${record.shipaddress}</p>
                     </td>
                 </tr>
             </table>
@@ -305,31 +303,31 @@
                 <tr style="margin-top: 10px;">
                     <td colspan="5" align="left"  style="width:100%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                </span>Tipo de transporte: ${record.custbody_l595_tipo_transp}</p>
+                </span><b>Tipo de transporte:</b> ${record.custbody_l595_tipo_transp}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;Modalidad de transporte: ${record.custbody_l595_modalidad_trans}</span></p>
+                &nbsp;&nbsp;<b>Modalidad de transporte:</b> ${record.custbody_l595_modalidad_trans}</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" align="left"  style="width:100%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                Tipo de vehículo: ${record.custbody_l595_tipo_vehiculo}</span></p>
+                <b>Tipo de vehículo:</b> ${record.custbody_l595_tipo_vehiculo}</span></p>
                     </td>
                     <td colspan="3" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;Marca del vehículo: ${record.custbody_l595_marca}</span></p>
+                &nbsp;&nbsp;<b>Marca del vehículo:</b> ${record.custbody_l595_marca}</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" align="left" style="width:100%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;"> 
-                </span>Tipo de identificacion del vehículo: ${record.custbody_l595_tipo_id_vehiculo.name}</p>
+                </span><b>Tipo de identificación del vehículo:</b> ${record.custbody_l595_tipo_id_vehiculo.name}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 50%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;&nbsp;ID/Matricula: ${record.custbody_l595_placa_vehiculo}</span></p>
+                &nbsp;&nbsp;<b>ID/Matrícula:</b> ${record.custbody_l595_placa_vehiculo}</span></p>
                     </td>
                 </tr>
             </table>
@@ -343,35 +341,35 @@
                 <tr style="margin-top: 10px;">
                     <td colspan="3" align="left" style="width: 10%; padding-left:8px;"> 
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                </span>Nombre o razón social: ${record.custbody_l595_transportista}</p>
+                </span><b>Nombre o razón social:</b> ${record.custbody_l595_transportista}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 10%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;</span>Naturaleza del transportista: ${record.custbody_l595_naturaleza_transportista}</p>
+                &nbsp;</span><b>Naturaleza del transportista:</b> ${record.custbody_l595_naturaleza_transportista}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 10%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                </span>Dirección del transportista: ${record.custbody_l595_transportista.address?replace('<br />', ' ')}</p>
+                </span><b>Dirección del transportista:</b> ${record.custbody_l595_transportista.address?replace('<br />', ' ')}</p>
                     </td>
                 </tr>
                 <tr style="margin-top: 10px;">
                     <td colspan="9" align="left" style="width: 30%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;</span>RUC/Documento transportista: ${record.custbody_l595_ruc_transportista}</p>
+                &nbsp;</span><b>RUC/Documento transportista:</b> ${record.custbody_l595_ruc_transportista}</p>
                     </td>
                 </tr>
                 <tr style="margin-top: 10px;">
                     <td colspan="3" align="left" style="width: 30%; padding-left:8px;" >
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                </span>Nombre y apellido del chofer: ${record.custbody_l595_chofer}</p>
+                </span><b>Nombre y apellido del chofer:</b> ${record.custbody_l595_chofer}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 30%;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-                &nbsp;</span>Nro. doc. del chofer: ${record.custbody_l595_ruc_chofer}</p>
+                &nbsp;</span><b>Nro. doc. del chofer:</b> ${record.custbody_l595_ruc_chofer}</p>
                     </td>
                     <td colspan="3" align="left" style="width: 30%; padding-left:8px;">
                         <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
-               </span>Dirección del chofer: ${record.custbody_l595_direccion_chofer}</p>
+               </span><b>Dirección del chofer:</b> ${record.custbody_l595_direccion_chofer}</p>
                     </td>
                 </tr>
             </table>
@@ -407,7 +405,7 @@
                 <tr>
                     <td align="left" style="width: 18%; border: 0px solid black;">
                         <p style="text-align: left;"><span style="font-size:20px; color: #da4242;">
-                            NO SE ENCUENTRA ASOCIADO A NINGUN TIPO DE COMPROBANTE
+                            <b>NO SE ENCUENTRA ASOCIADO A NINGUN TIPO DE COMPROBANTE</b>
                         </span></p>
                     </td>
                 </tr>
