@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_114_t2584948_914" standard="STDTMPLEMPTY">
+  <description></description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Autofactura</title>
+  <trantype>PURCHORD</trantype>
+</advancedpdftemplate>

@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_factura_de_venta" standard="STDTMPLEMPTY">
+  <description>Impresión de factura de venta.</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Factura de venta PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_debito_ticket" standard="STDTMPLEMPTY">
+  <description>Nota de Débito Ticket</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota de Débito Ticket PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

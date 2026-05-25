@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_debito_exportacion" standard="STDTMPLEMPTY">
+  <description>Nota Débito de Exportación</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota Débito de Exportación PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

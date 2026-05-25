@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_boleta_venta" standard="STDTMPLEMPTY">
+  <description>Boleta de venta</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Boleta de venta PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

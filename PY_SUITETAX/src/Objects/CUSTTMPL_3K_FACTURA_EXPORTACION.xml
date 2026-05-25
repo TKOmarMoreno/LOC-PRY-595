@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_factura_exportacion" standard="STDTMPLEMPTY">
+  <description>Factura de Exportación</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Factura de Exportación PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

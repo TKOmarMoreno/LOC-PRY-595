@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_credito_exportacion" standard="STDTMPLEMPTY">
+  <description>Nota Crédito de Exportación</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota Crédito de Exportación PDF/HTML</title>
+  <trantype>CUSTCRED</trantype>
+</advancedpdftemplate>

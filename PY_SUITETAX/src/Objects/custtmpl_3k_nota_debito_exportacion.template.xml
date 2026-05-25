@@ -1,0 +1,674 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+    <head>
+        <#if record.custbody_l595_tipo_comprobante.id='1' || record.custbody_l595_tipo_comprobante.id='2' || record.custbody_l595_tipo_comprobante.id='3' || record.custbody_l595_tipo_comprobante.id='4' || record.custbody_l595_tipo_comprobante.id='5' || record.custbody_l595_tipo_comprobante.id='6'>
+            <macrolist>
+                <macro id="nlheader">
+
+                    <table class="header" style=" height:25%; width: 100%; border: 1px solid black ">
+                        <tr>
+                            <td rowspan="3" align="center" style="width: 20%; border: 0.70px solid black;"><span class="title">
+                            <!-- <img src='https://7138551.app.netsuite.com/core/media/media.nl?id=112&amp;c=7138551&amp;h=0uZXyLZrVmHUHHqQHbpoR3jGoUNwqGBj_hqm-kdkTUjT6dLH' style="vertical-align: center; height:40%; width:40%" /> -->
+                            <#if subsidiary.logo?length != 0>
+                            <img src="${subsidiary.logo@url}" style="vertical-align: middle; height:81px; width:107px; margin-top: 20px;" />
+                            </#if>
+                    </span>
+                            </td>
+                            <td rowspan="3" align="center" valign="middle" style="width: 47%; border: 1px solid black;">
+                                <p style="text-align: center;"><span style="font-size:10px;">${subsidiary.mainaddress_text}</span></p>
+                            </td>
+                            <td rowspan="3" align="center" style="width: 32%; border: 1px solid black;">
+                                <p style="text-align: center;">
+                                    <span style="font-size:10px;">TIMBRADO N° ${record.custbody_l595_timbrado}<br />Valido desde ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio} hasta ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_vencimient}<br />
+                                <b>RUC:${subsidiary.custrecord_l595_nro_ident_fiscal}</b><br />
+                                <b>${record.custbody_l595_tipo_comprobante}</b><br />
+                            </span><br />
+                                    <span style="font-size:13px;">${record.custbody_l595_numero_localizado}</span></p>
+                            </td>
+                        </tr>
+                    </table>
+                </macro>
+                <!-- <macro id="nlfooter">
+                <table class="footer" style="width: 100%;">
+
+                </table>
+            </macro>-->
+            </macrolist>
+        </#if>
+        <style type="text/css">
+            * {
+                <#if .locale=="zh_CN">font-family: NotoSans, NotoSansCJKsc, sans-serif;
+                <#elseif .locale=="zh_TW">font-family: NotoSans, NotoSansCJKtc, sans-serif;
+                <#elseif .locale=="ja_JP">font-family: NotoSans, NotoSansCJKjp, sans-serif;
+                <#elseif .locale=="ko_KR">font-family: NotoSans, NotoSansCJKkr, sans-serif;
+                <#elseif .locale=="th_TH">font-family: NotoSans, NotoSansThai, sans-serif;
+                <#else>font-family: NotoSans, sans-serif;
+                </#if>
+            }
+            
+            table {
+                font-size: 7px;
+                table-layout: fixed;
+                border: 1px solid rgb(116, 113, 113);
+            }
+            
+            th {
+                font-weight: bold;
+                font-size: 8pt;
+                vertical-align: middle;
+                padding: 5px 6px 3px;
+                background-color: #AEAEAE;
+                color: #333333;
+            }
+            
+            td {
+                padding: 4px 6px;
+            }
+            
+            td p {
+                text-align: left
+            }
+            
+            b {
+                font-weight: bold;
+            }
+            
+            ul li {
+                font-size: 10pt;
+            }
+            
+            table.header td {
+                padding: 0;
+                font-size: 11pt;
+            }
+            
+            table.footer td {
+                padding: 0;
+                font-size: 8pt;
+            }
+            
+            table.body td {
+                padding-top: initial;
+            }
+            
+            table.total {
+                page-break-inside: avoid;
+            }
+            
+            tr.totalrow {
+                background-color: #e3e3e3;
+                line-height: 200%;
+            }
+            
+            td.totalboxtop {
+                font-size: 12pt;
+                background-color: #e3e3e3;
+            }
+            
+            td.addressheader {
+                font-size: 8pt;
+                padding-top: 6px;
+                padding-bottom: 2px;
+            }
+            
+            td.address {
+                padding-top: 0;
+            }
+            
+            td.totalboxmid {
+                font-size: 28pt;
+                padding-top: 20px;
+                background-color: #e3e3e3;
+            }
+            
+            td.totalboxbot {
+                background-color: #e3e3e3;
+                font-weight: bold;
+            }
+            
+            span.title {
+                font-size: 28pt;
+            }
+            
+            span.number {
+                font-size: 16pt;
+            }
+            
+            span.itemname {
+                font-weight: bold;
+                line-height: 150%;
+            }
+            
+            hr {
+                width: 100%;
+                color: #d3d3d3;
+                background-color: #d3d3d3;
+                height: 1px;
+            }
+        </style>
+    </head>
+
+    <body header="nlheader" header-height="10.8%" footer="nlfooter" footer-height="20pt" padding="0.5in 0.5in 0.5in 0.5in" size="A4">
+        <#if record.custbody_l595_tipo_comprobante.id='1' || record.custbody_l595_tipo_comprobante.id='2' || record.custbody_l595_tipo_comprobante.id='3' || record.custbody_l595_tipo_comprobante.id='4' || record.custbody_l595_tipo_comprobante.id='5' || record.custbody_l595_tipo_comprobante.id='6'>
+            <table class="header" style="height: 66px; width: 100%; border: 1px solid black;">
+                <tr>
+                    <td align="left" style="width: 60%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Fecha: ${record.trandate}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;&nbsp;Tipo de comprobante: ${record.custbody_l595_tipo_comprobante}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 60%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Señores: ${record.custbody_l595_razon_social}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;&nbsp;Pais: ${record.billingaddress.country}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 60%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Ruc: ${record.vatregnum}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;&nbsp;Ciudad: ${record.billingaddress.city}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 60%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Telefono: ${record.billingaddress.addrphone}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;&nbsp;Cond. de Pago: ${record.custbody_l595_condicion_operacion}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Dirección:${record.billingaddress.addr1}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="width: 40%; border: 1px solid black;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                &nbsp;Nota de Remisión: ${record.createdfrom}</span></p>
+                    </td>
+                </tr>
+            </table>
+            <#if record.custbody_l595_tipo_comprobante.id='2' || record.custbody_l595_tipo_comprobante.id='5'>
+                <p style="text-align: left; font-size:12px; "><i>Sirva(se) tomar nota que estamos DEBITANDO en su apreciable Cuenta Corriente, por las razones siguientes:</i></p>
+            </#if>
+            <#if record.item?has_content>
+                <table class="itemtable" style="width: 100%; margin-top: 13px; border: 1px solid black;">
+                    <!-- start items -->
+                    <#list record.item as item>
+                        <#if (item.quantity?has_content)>
+                            <#assign cantidad=item.quantity>
+
+                                <#else>
+                                    <#assign cantidad=1>
+                        </#if>
+                        <#if item_index==0>
+                            <tr>
+                                <td align="center" style="width: 10%; font-size: 9px; border: 1px solid black;"><b>ART / COD</b></td>
+                                <td align="center" style="width: 14%; font-size: 9px; border: 1px solid black;"><b>UNID DE MEDIDA</b></td>
+                                <td align="center" style="width: 6%; font-size: 9px; border: 1px solid black;"><b>CANT</b></td>
+                                <td align="center" style="width: 28%; font-size: 9px; border: 1px solid black;"><b>DESCRIPCIÓN</b></td>
+                                <td align="center" style="width: 15%; font-size: 9px; border: 1px solid black;"><b>PREC UNIT.</b> </td>
+                                <td align="center" style="width: 17%; font-size: 9px; border: 1px solid black;"><b>IMPUESTO</b></td>
+                                <td align="center" style="width: 10%; font-size: 9px; border: 1px solid black;"><b>IMP.BRUTO</b></td>
+                            </tr>
+                        </#if>
+                        <tr>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;">${item.item}</td>
+                            <td align="center" style="width: 5%; font-size: 10px; border: 1px solid black;">${item.units}</td>
+                            <td align="center" style="width: 10%; font-size: 12px; border: 1px solid black;">${item.quantity}</td>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;">${item.description}</td>
+                            <td align="center" style="width: 35%; font-size: 10px; border: 1px solid black;">${(item.amount/cantidad)?string("PYG #,##0.00 ")}</td>
+                            <td align="center" style="width: 15%; font-size: 10px; border: 1px solid black;">${item.custcol_l595_tasa_imp_art}</td>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;">${item.amount}</td>
+                        </tr>
+                    </#list>
+                    <tr>
+                        <td colspan="5" align="left" style="width: 5%; font-size: 10px; border: 1px solid black;">&nbsp;</td>
+                        <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;">TOTAL</td>
+                        <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;"><b>${record.total}</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" align="left" style="width: 5%; font-size: 10px; border: 1px solid black;">
+                            <p style="text-align: left; font-size:12px;"><span style="font-size:9px;">
+                    &nbsp;<b>SON:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ${record.custbody_l595_monto_escrito}.</span></p>
+                        </td>
+                        <td align="center" style="width: 10%; font-size: 10px; border: 1px solid black;"><b>&nbsp;</b></td>
+                    </tr>
+                </table>
+                <!--<#elseif record.custbody_l595_tipo_comprobante.id='3'>
+                    <table class="itemtable" style="width: 100%;  border: 0px solid rgb(0, 0, 0);  margin-top: 10px; ">
+
+                        <tr>
+                            <td colspan="9" align="left" style="width: 71.5%; font-size: 10px; border: 0px solid black;"><b>MOTIVOS DE LA XXXXXXX</b></td>
+                            <td align="right" style="width: 13.5%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                            <td align="center" style="width: 15%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                        </tr>
+                    </table>
+
+                    <table class="itemtable" style="height: 50px; width: 100%;  border: 0px solid rgb(0, 0, 0);">
+                        <tr>
+                            <td align="left" style="width: 5%; font-size: 10px; border: 0px solid black;">
+                                <input type="checkbox" name="myText1" id="checked1" />
+                            </td>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 0px solid black;">xxxxxxx</td>
+                            <td align="left" style="width: 5%; font-size: 10px; border: 0px solid black;">
+                                <input type="checkbox" name="myText2" id="checked2" />
+                            </td>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 0px solid black;">xxxxxxx</td>
+                            <td align="left" style="width: 5%; font-size: 10px; border: 0px solid black;">
+                                <input type="checkbox" name="myText3" id="checked3" />
+                            </td>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 0px solid black;">xxxxxxx</td>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="left" style="width: 13.8%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                            <td align="right" style="width: 15.3%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                            <td align="center" style="width: 16.9%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 5%; font-size: 10px; border: 0px solid black;">
+                                <input type="checkbox" name="myText4" id="checked4" />
+                            </td>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 0px solid black;">xxxxxxx</td>
+                            <td align="left" style="width: 5%; font-size: 10px; border: 0px solid black;">
+                                <input type="checkbox" name="myText5" id="checked5" />
+                            </td>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 0px solid black;">xxxxxxx</td>
+                            <td align="center" style="width: 5%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="center" style="width: 13%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="center" style="width: 14%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="center" style="width: 14%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                            <td align="left" style="width: 14%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                            <td align="right" style="width: 14%; font-size: 10px; border: 0px solid black;"><b></b></td>
+                            <td align="center" style="width: 10%; font-size: 10px; border: 0px solid black;"><b>&nbsp;</b></td>
+                        </tr>
+                    </table>
+
+                    <table class="itemtable" style="width: 100%;  border: 0px solid rgb(0, 0, 0);">
+
+                        <tr>
+                            <td align="left" style="width: 1000%; font-size: 10px; border: 0px solid black;"><b>
+                    ------------------------------------------------------------------------------------------------------------------------------------------------------
+                    </b></td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" style="width: 71.5%; font-size: 10px; border: 0px solid black;"><b>XXXXXXX XXXXXX XXXX</b><br />
+                                <b>XXXXXXXXXXXX XXX XXXXXXX XXXXXXXXXX ___________________________________________ Del _________________</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 71.5%; font-size: 10px; border: 0px solid black;"><b>XXXXXXX XX XXXXXX ______________________</b></td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" style="width: 71.5%; font-size: 10px; border: 0px solid black;">
+                                <b>xxxxx xxxxx xxxxxx xxxxx xxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___________________________</b><br
+                                />
+                                <b>xxxxxxxxxxx xxxxxxxxx xxxxxxxxxxx xxxxxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Xxxxxxx</b>
+                            </td>
+                        </tr>
+                    </table>
+            </#if>-->
+                <#elseif record.custbody_l595_tipo_comprobante.id='7' || record.custbody_l595_tipo_comprobante.id='8' || record.custbody_l595_tipo_comprobante.id='9'>
+                    <#if record.item?has_content>
+                        <table align="center" class="header" style=" height:25%; width: 50%; border: 0px solid black ">
+                            <tr>
+                                <td align="center" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: center;"><span style="font-size:12px; color: #8079EF;">TEKIIO. - Ruc ${subsidiary.custrecord_l595_nro_ident_fiscal}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">${subsidiary.mainaddress_text}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">Tel. ${record.billingaddress.addrphone}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">Timbrado No.: ${record.custbody_l595_timbrado}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+         Vig.: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Vto.: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_vencimient}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">** Factura ${record.custbody_l595_condicion_operacion} **</span></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table align="center" class="header" style="height:25%;  width: 50%; border: 0px solid black; margin-top: 30px;">
+                            <tr>
+                                <td align="left" style="width: 30%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">${record.custbody_l595_numero_localizado}
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 20%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 25%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 25%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    Mostrador ${record.custbody_l595_numero_localizado}
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 40%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">${record.trandate}
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 10%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 25%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 25%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="left" style="width: 30%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                            ${record.custbody_l595_razon_social}
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                            ${record.custbody_l595_tipo_documento} ${record.vatregnum}
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    --------------------------------------------------------------------------------
+                                </span></p>
+                                </td>
+                            </tr>
+                            <#list record.item as item>
+                                <#if item_index==0>
+                                    <tr>
+                                        <td align="left" style="width: 18%; border: 0px solid black;">
+                                            <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Producto
+                                </span></p>
+                                        </td>
+                                        <td align="left" style="width: 18%; border: 0px solid black;">
+                                            <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                  /Bruto
+                                </span></p>
+                                        </td>
+                                        <td align="left" style="width: 18%; border: 0px solid black;">
+                                            <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Neto &nbsp;Subtotal
+                                </span></p>
+                                        </td>
+                                        <td align="left" style="width: 18%; border: 0px solid black;">
+                                            <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Imp./Cant.
+                                </span></p>
+                                        </td>
+                                    </tr>
+                                </#if>
+                                <tr>
+                                    <td colspan="4" align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    --------------------------------------------------------------------------------
+                                </span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" align="left" style="width: 50%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                        ${item.item}
+                                  </span>
+                                        </p>
+                                    </td>
+                                    <td align="right" style="width: 50%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    ${item.quantity}
+                                  </span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                        ${(item.amount!0 + item.taxamount!0)}
+                                  </span>
+                                        </p>
+                                    </td>
+                                    <td align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                        ${item.amount}
+                                  </span>
+                                        </p>
+                                    </td>
+                                    <td align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                        ${item.amount}
+                                  </span>
+                                        </p>
+                                    </td>
+                                    <td align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                        ${item.custcol_l595_tasa_imp_art}
+                                  </span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </#list>
+                            <tr>
+                                <td colspan="4" align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    --------------------------------------------------------------------------------
+                                </span></p>
+                                </td>
+                            </tr>
+                            <!--<tr>
+                            <td align="left" style="width: 18%; border: 1px solid black;">
+                                <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Total Impuesto 10%&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.905
+                                </span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 18%; border: 1px solid black;">
+                                <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Total Impuesto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.905
+                                </span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 18%; border: 1px solid black;">
+                                <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                   Total Ventas 10%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20.950
+                                </span></p>
+                            </td>
+                        </tr>-->
+                        </table>
+
+                        <table align="center" class="header" style="height:25%;  width: 50%; border: 0px solid black;">
+                            <!-- start items -->
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    Total Impuesto
+                                </span></p>
+                                </td>
+                                <td align="right" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                ${record.taxtotal}
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    Subtotal
+                                </span></p>
+                                </td>
+                                <td align="right" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                ${record.subtotal}
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                --------------------------------------------------------------------------------
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                    TOTAL A PAGAR
+                                </span></p>
+                                </td>
+                                <td align="right" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                ${record.total}
+                                </span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="width: 18%; border: 0px solid black;">
+                                    <p style="text-align: left;"><span style="font-size:12px; color: #8079EF;">
+                                --------------------------------------------------------------------------------
+                                </span></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </#if>
+                    <#elseif record.custbody_l595_tipo_comprobante.id='13'>
+                        <table class="itemtable" style="width: 100%; margin-top: 10px; border: 1px solid black;">
+                            <!-- start items -->
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 20px; border-right: 1px solid black;"><b>TEKIIO</b></td>
+                                <td align="center" style="width: 40%; font-size: 15px; border: 0px solid black;"><b>TIMBRADO N° ${record.custbody_l595_timbrado}</b></td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 12px; border-right: 1px solid black;"></td>
+                                <td align="center" style="width: 40%; font-size: 12px; border: 0px solid black;">Fecha Inicio Vigencia: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio}</td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="width: 60%; font-size: 12px; border-right: 1px solid black;">&nbsp;</td>
+                                <td align="center" style="width: 40%; font-size: 12px; border: 0px solid black;">Fecha fin Vigencia: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_vencimient}</td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 12px; border-right: 1px black;">${subsidiary.mainaddress_text}</td>
+                                <td align="center" style="width: 40%; font-size: 15px; border: 0px solid black;"><br /><b>RUC ${subsidiary.custrecord_l595_nro_ident_fiscal}</b></td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="width: 60%; font-size: 9px; border-right: 1px solid black;">&nbsp;</td>
+                                <td align="center" style="width: 40%; font-size: 15px; border: 0px solid black;"><b>${record.custbody_l595_tipo_comprobante}</b></td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 15px; border-right: 1px solid black;"></td>
+                                <td align="center" style="width: 40%; font-size: 12px; border: 0px solid black;">${record.custbody_l595_numero_localizado}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" style="width: 100%; font-size: 12px; border-top: 1px 0px solid black;">FECHA DE EMISIÓN: ${record.trandate}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" style="width: 100%; font-size: 12px; border-top: 1px solid black;">${record.custbody_l595_tipo_documento} ${record.vatregnum}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" style="width: 100%; font-size: 12px; border: 0px solid black;">NOMBRE O RAZÓN SOCIAL: ${record.custbody_l595_razon_social}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" style="width: 100%; font-size: 12px; border-top : 1px solid black;">VALOR DE VENTA: ${record.total}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td align="left" style="width: 60%; font-size: 10px; border-top: 1px solid black; border-right: 1px solid black;">HABILITACIÓN N° 2345</td>
+                                <td align="left" style="width: 40%; font-size: 10px; border-top: 1px solid black;">ORIGINAL CLIENTE</td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 10px; border-right: 1px solid black;">COPIM A X IMPRESIONES S.A</td>
+                                <td align="left" style="width: 40%; font-size: 10px; border: 0px solid black;">COPIA: ARCHIVO TRIBUTARIO</td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 10px; border-right: 1px solid black;">RUC 800000005 - 8</td>
+                                <td align="center" style="width: 40%; font-size: 10px; border: 0px solid black;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 60%; font-size: 10px; border-right: 1px solid black;">Estados Unidos 178 c/ Fulgencio R. Moreno -Asunción</td>
+                                <td align="center" style="width: 40%; font-size: 10px; border: 0px solid black;">&nbsp;</td>
+                            </tr> -->
+                        </table>
+                        <#else>
+                            <table align="center" class="header" style="height:25%;  width: 50%; border: 0px solid black;">
+                                <tr>
+                                    <td align="left" style="width: 18%; border: 0px solid black;">
+                                        <p style="text-align: left;"><span style="font-size:20px; color: #da4242;">
+                                            NO SE ENCUENTRA ASOCIADO A NINGUN TIPO DE COMPROBANTE
+                                        </span></p>
+                                    </td>
+                                </tr>
+                            </table>
+            </#if>
+    </body>
+</pdf>

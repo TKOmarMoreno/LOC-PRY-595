@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_credito_ticket" standard="STDTMPLEMPTY">
+  <description>Nota de Crédito Ticket</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota de Crédito Ticket PDF/HTML</title>
+  <trantype>CUSTCRED</trantype>
+</advancedpdftemplate>

@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_factura_ticket" standard="STDTMPLEMPTY">
+  <description>Impresión de Factura Ticket</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Factura Ticket PDF/HTML</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

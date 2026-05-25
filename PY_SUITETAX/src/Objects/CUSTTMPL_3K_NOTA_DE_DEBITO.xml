@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_de_debito" standard="STDTMPLEMPTY">
+  <description>Impresión de Nota de Debito</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota de Debito PDF/HTML Template</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

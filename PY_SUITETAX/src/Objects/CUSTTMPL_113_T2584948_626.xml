@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_113_t2584948_626" standard="STDTMPLEMPTY">
+  <description></description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>PACKINGSLIP</printtype>
+  <title>PRY - Nota de empaquetado</title>
+  <trantype>CUSTINVC</trantype>
+</advancedpdftemplate>

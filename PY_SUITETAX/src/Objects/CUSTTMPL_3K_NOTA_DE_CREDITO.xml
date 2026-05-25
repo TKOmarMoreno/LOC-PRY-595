@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_3k_nota_de_credito" standard="STDTMPLEMPTY">
+  <description>Impresión de Nota de Credito</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>PRY - Nota de Credito PDF/HTML</title>
+  <trantype>CUSTCRED</trantype>
+</advancedpdftemplate>

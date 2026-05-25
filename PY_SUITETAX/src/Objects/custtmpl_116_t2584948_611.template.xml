@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+    <head>
+            <macrolist>
+                <macro id="nlheader">
+                    <table class="header" style=" height: 15%; width: 100%; border: 2px solid black; ">
+                        <tr>
+                            <td colspan="9" align="center" style="text-align: center; background: #AEAEAE;">KuDE de Autofactura electrónica</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="4" align="left" style="margin-left: 13px;">
+                              <#assign jsonList = record.custbody_l595_actividad_economica?eval />
+                                <#assign actEconomica = jsonList[0].nombre />
+                                <span class="title">
+                                    <!-- <img src='https://7138551.app.netsuite.com/core/media/media.nl?id=112&amp;c=7138551&amp;h=0uZXyLZrVmHUHHqQHbpoR3jGoUNwqGBj_hqm-kdkTUjT6dLH' style="vertical-align: center; height:40%; width:40%" /> -->
+                                    <#if subsidiary.logo?length != 0>
+                                        <img src="${subsidiary.logo@url}" style="vertical-align: middle; height:81px; width:107px; margin-top: 20px;" /><br />
+                                    </#if>
+                                    <p style="text-align: left;"><span style="font-size:11px;">
+                                     <b> ${subsidiary.legalname} </b> <br />
+                                        Dirección: ${subsidiary.mainaddress_text}<br />
+                                        Ciudad: ${subsidiary.city} <br />
+                                        Telefono: ${subsidiary.custrecord_l595_telefono}<br />
+                                        Email: ${subsidiary.email}<br />
+                                        Actividad Eco: ${actEconomica}
+                                      </span>
+                                    </p>                   
+                                </span>
+                            </td>
+                            <td colspan="4" rowspan="4" align="left" style="margin-top: 10px; font-size:11px;">
+                                <p>
+                                    RUC:${subsidiary.custrecord_l595_nro_ident_fiscal}<br />
+                                    TIMBRADO N° ${record.custbody_l595_timbrado}<br />
+                                    Fecha Inicio Vigencia: ${record.custbody_l56_ref_num.custrecord_l595_numerad_fecha_inicio}<br />
+                                    Serie: ${record.custbody_l595_serie}
+                                </p><br /><br />
+                                <p>
+                                    ${record.custbody_l595_tipo_comprobante}<br />
+                                    ${record.custbody_l595_numero_localizado}
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </macro>
+                <macro id="nlfooter">
+                <table style="height:15%; width:100%;">
+
+                    <#assign cdc = record.custbody_l595_fe_cdc_generado?if_exists?trim>
+                    <#assign qrRaw = record.custbody_l595_fe_qr_generado?if_exists!''?trim>
+                    <#if qrRaw?contains('href="')>
+                      <#assign urlPart = qrRaw?keep_after('href="')?keep_before('"')?trim>
+                    <#elseif qrRaw?contains('href=')>
+                      <#assign urlPart = qrRaw?keep_after('href=')?keep_before('>')?trim>
+                    <#else>
+                      <#assign urlPart = qrRaw>
+                    </#if>
+                    <#assign urlClean = urlPart?replace('\r','')?replace('\n','')>
+                        <tr>
+                            <td colspan="3"> 
+                      <#if qrRaw?has_content>
+                        <barcode codetype="qrcode"
+                                 showtext="false"
+                                 width="150"
+                                 height="150"
+                                 value="${urlClean}"/>
+                      <#else>
+                    <img src="data:image/gif;base64,
+                        R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                         width="150" height="150" />
+                      </#if>
+                            </td>
+                            <td colspan="6" align="center" style="margin-left: 13px; margin-top: 20px; font-size:11px; text-align: center;">
+                                <span>
+                                    Consulte la validez de este Documento Electrónico con el número de CDC impreso abajo en: https://ekuatia.set.gov.py/consultas/
+                                </span> <br /><br />
+                                <span><b>CDC: ${record.custbody_l595_fe_cdc_generado}</b></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="font-size: 11px;">
+                                <p><b>ESTE DOCUMENTO ES UNA REPRESENTACIÓN GRÁFICA DE UN DOCUMENTO ELECTRÓNICO (XML)</b>
+                                    Información de interés del facturador electrónico emisor.
+                                    Si su documento electrónico presenta algún error, podrá solicitar la modificación dentro de las 72 horas siguientes de la emisión de este comprobante.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </macro>
+            </macrolist>
+        <style type="text/css">
+            * {
+                <#if .locale=="zh_CN">font-family: NotoSans, NotoSansCJKsc, sans-serif;
+                <#elseif .locale=="zh_TW">font-family: NotoSans, NotoSansCJKtc, sans-serif;
+                <#elseif .locale=="ja_JP">font-family: NotoSans, NotoSansCJKjp, sans-serif;
+                <#elseif .locale=="ko_KR">font-family: NotoSans, NotoSansCJKkr, sans-serif;
+                <#elseif .locale=="th_TH">font-family: NotoSans, NotoSansThai, sans-serif;
+                <#else>font-family: NotoSans, sans-serif;
+                </#if>
+            }
+            
+            table {
+                font-size: 7px;
+                table-layout: fixed;
+            }
+            
+            th {
+                font-weight: bold;
+                font-size: 8pt;
+                vertical-align: middle;
+                padding: 5px 6px 3px;
+                background-color: #AEAEAE;
+                color: #333333;
+            }
+            
+            td {
+                padding: 4px 6px;
+            }
+
+            td p {
+                text-align: left
+            }
+            
+            b {
+                font-weight: bold;
+            }
+            
+            ul li {
+                font-size: 10pt;
+            }
+            
+            table.header td {
+                padding: 0;
+                font-size: 11pt;
+            }
+            
+            table.footer td {
+                padding: 0;
+                font-size: 8pt;
+            }
+            
+            table.body td {
+                padding-top: initial;
+            }
+            
+            table.total {
+                page-break-inside: avoid;
+            }
+            
+            tr.totalrow {
+                background-color: #e3e3e3;
+                line-height: 200%;
+            }
+            
+            td.totalboxtop {
+                font-size: 12pt;
+                background-color: #e3e3e3;
+            }
+            
+            td.addressheader {
+                font-size: 8pt;
+                padding-top: 6px;
+                padding-bottom: 2px;
+            }
+            
+            td.address {
+                padding-top: 0;
+            }
+            
+            td.totalboxmid {
+                font-size: 28pt;
+                padding-top: 20px;
+                background-color: #e3e3e3;
+            }
+            
+            td.totalboxbot {
+                background-color: #e3e3e3;
+                font-weight: bold;
+            }
+            
+            span.title {
+                font-size: 28pt;
+            }
+            
+            span.number {
+                font-size: 16pt;
+            }
+            
+            span.itemname {
+                font-weight: bold;
+                line-height: 150%;
+            }
+            
+            hr {
+                width: 100%;
+                color: #d3d3d3;
+                background-color: #d3d3d3;
+                height: 1px;
+            }
+        </style>
+    </head>
+
+    <body header="nlheader" header-height="27%" footer="nlfooter" footer-height="20%" padding="0.5in 0.5in 0.5in 0.5in" size="A4">
+        <table class="header" style="height: 66px; width: 100%; border: 2px solid black;">
+                <tr style="margin-top: 10px;">
+                    <td align="left" style="width: 60%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                </span>Fecha y Hora emision: ${record.custbody_l595_fe_fecha_cdc_generado}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 60%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Naturaleza del Vendedor: ${record.entity.custentity_l595_naturaleza}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Tipo de constancia: ${record.custbody_l595_tipo_comprobante}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 60%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Nro. doc de identidad vendedor: ${record.entity.custentity_l595_nro_documento} </span></p>
+                    </td>
+                    <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Nro. Constacia: ${record.tranid}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Nombre y apellido vendedor: ${record.custbody_l595_razon_social}</span></p>
+                    </td>
+                  <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Direccion vendedor: ${record.billaddress}</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                Nombre/Razon social comprador: ${subsidiary.legalname}</span></p>
+                    </td>
+                    <td align="left" style="width: 40%;">
+                        <p style="text-align: left; font-size:12px;"><span style="font-size:12px;">
+                RUC-DV Comprador: ${subsidiary.custrecord_l595_nro_ident_fiscal}</span></p>
+                    </td>
+                </tr>
+        </table>
+        <#if record.item?has_content>
+            <table class="itemtable" style="width: 100%; margin-top: 13px; border: 1px solid black;">
+                    <!-- start items -->
+                    <#list record.item as item>
+                        <#if (item.quantity?has_content)>
+                            <#assign cantidad=item.quantity?number>
+                        <#else>
+                            <#assign cantidad=1>
+                        </#if>
+                        <#if item_index==0>
+                            <tr>
+                                <td align="center" style="width: 13%; font-size: 9px; border: 1px solid black;"><b>COD</b></td>
+                                <td align="center" style="width: 17%; font-size: 9px; border: 1px solid black;"><b>Descripción</b></td>
+                                <td align="center" style="width: 10%; font-size: 9px; border: 1px solid black;"><b>Cantidad</b></td>
+                                <td align="center" style="width: 15%; font-size: 9px; border: 1px solid black;"><b>Precio Unitario</b> </td>
+                                <td align="center" style="width: 17%; font-size: 9px; border: 1px solid black;"><b>Valor de venta</b></td>
+                            </tr>
+                        </#if>
+                        <#if item.itemtype!='Discount' && item.amount \gt 0>
+                                <#if item.rate \gt 0>
+                                 <#assign rate = item.rate?c?number>
+                                 <#else>
+                                 <#assign rate = (item.amount?c?number / item.quantity)?c?number>
+                                 </#if>
+                                   <#assign E721 = rate * (1 + item.custcol_l595_tasa_imp_art)>
+
+                            <#if item.custcol_l595_descuento \gt 0>
+                                <#assign E721 =  ((rate  - item.custcol_l595_descuento/item.quantity) * (1 + item.custcol_l595_tasa_imp_art))?round>
+                            </#if>
+                        <tr>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 1px solid black;">${item.custcol_l595_cod_int}</td>
+                            <td align="left" style="width: 17%; font-size: 10px; border: 1px solid black;">${item.description}</td>
+                            <td align="right" style="width: 10%; font-size: 12px; border: 1px solid black;">${item.quantity}</td>                           
+                            <td align="right" style="width: 35%; font-size: 10px; border: 1px solid black;">${(E721)?string(",###")?replace(",",".")}</td>
+                            <td align="right" style="width: 15%; font-size: 10px; border: 1px solid black;">${(E721 * item.quantity )?string(",###")?replace(",",".")?replace('PYG', '')}</td>
+                        </tr>
+                        </#if>
+                    </#list>
+                    <tr>
+                        <td colspan="4" align="left" style="width: 10%; font-size: 10px; border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">Total a pagar</td>
+                        <td colspan="1" align="right" style="width: 10%; font-size: 10px; border: 1px solid black;">${record.total?replace('PYG', '')?trim}</td>
+                    </tr>
+            </table>
+        </#if>
+        <#if record.expense?has_content>
+            <table class="itemtable" style="width: 100%; margin-top: 13px; border: 1px solid black;">
+                    <!-- start items -->
+                    <#list record.expense as gastos>
+                        <#if (gastos.quantity?has_content)>
+                            <#assign cantidad=gastos.quantity?number>
+                        <#else>
+                            <#assign cantidad=1>
+                        </#if>
+                        <#if gastos_index==0>
+                            <tr>
+                                <td align="center" style="width: 13%; font-size: 9px; border: 1px solid black;"><b>COD</b></td>
+                                <td align="center" style="width: 17%; font-size: 9px; border: 1px solid black;"><b>Descripción</b></td>
+                                <td align="center" style="width: 10%; font-size: 9px; border: 1px solid black;"><b>Cantidad</b></td>
+                                <td align="center" style="width: 15%; font-size: 9px; border: 1px solid black;"><b>Precio Unitario</b> </td>
+                                <td align="center" style="width: 17%; font-size: 9px; border: 1px solid black;"><b>Valor de venta</b></td>
+                            </tr>
+                        </#if>
+                        <tr>
+                            <td align="left" style="width: 13%; font-size: 10px; border: 1px solid black;">${gastos.custcol_l595_cod_int}</td>
+                            <td align="left" style="width: 17%; font-size: 10px; border: 1px solid black;">${gastos.account}</td>
+                            <td align="right" style="width: 10%; font-size: 10px; border: 1px solid black;">${cantidad},00</td>                       
+                            <td align="right" style="width: 35%; font-size: 10px; border: 1px solid black;">${((gastos.amount + gastos.taxamount)/cantidad)?string(",###")?replace(",",".")}</td>
+                            <td align="right" style="width: 15%; font-size: 10px; border: 1px solid black;">${(gastos.amount + gastos.taxamount)?replace('PYG', '')}</td>
+                        </tr>
+                    </#list>
+                    <tr>
+                        <td colspan="4" align="left" style="width: 10%; font-size: 10px; border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">Total a pagar</td>
+                        <td colspan="1" align="right" style="width: 10%; font-size: 10px; border: 1px solid black;">${record.total?replace('PYG', '')?trim}</td>
+                    </tr>
+            </table>
+        </#if>
+    </body>
+</pdf>
